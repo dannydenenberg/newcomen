@@ -1,0 +1,42 @@
+# Permalinks
+permalink: pretty
+
+repository: dannydenenberg/newcomen
+
+# Setup
+title: Newcomen
+tagline:
+url: /
+paginate: 1
+baseurl: ""
+
+# Assets
+#
+# We specify the directory for Jekyll so we can use @imports.
+sass:
+  sass_dir: _sass
+  style: :compressed
+
+# About/contact
+author:
+  name: Daniel Denenberg
+  url: https://twitter.com/da_nn_y_o
+  email: dannydenenberg@gmail.com
+
+# Custom vars
+version: 2.0.0
+github:
+  repo: https://github.com/dannydenenberg/newcomen
+
+# This is the list of pages to include in the header of the website.
+pages_list:
+  About: "/about/"
+  Todo: "/dod"
+
+# personal info
+twitter-url: da_nn_y_o
+
+# Gems
+plugins:
+  - jekyll-paginate
+  - jekyll-gist

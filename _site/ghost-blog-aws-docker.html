@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  
+
+
+  <title>
+    
+    How to create a Ghost blog with docker 🐳+ AWS ❤️ &middot; @da_nn_y_o
+    
+  </title>
+
+  <link rel="stylesheet" href="/styles.css" />
+  <link
+    rel="apple-touch-icon-precomposed"
+    sizes="144x144"
+    href="/public/apple-touch-icon-precomposed.png"
+  />
+  <link rel="shortcut icon" href="/public/favicon.ico" />
+  <link
+    rel="alternate"
+    type="application/atom+xml"
+    title="@da_nn_y_o"
+    href="/atom.xml"
+  />
+</head>
+
+
+  <body>
+    <div class="container content">
+      <header class="masthead">
+        <h3 class="masthead-title">
+          <a href="/" title="Home">@da_nn_y_o</a>
+          <small></small>
+        </h3>
+
+         &nbsp;&nbsp;&nbsp;<span
+          class="nav-bar-item"
+          ><a href="/about/">About</a></span
+        >
+         &nbsp;&nbsp;&nbsp;<span
+          class="nav-bar-item"
+          ><a href="/dod">Todo</a></span
+        >
+        
+      </header>
+
+      <main>
+        <article class="post">
+  <h1 class="post-title">How to create a Ghost blog with docker 🐳+ AWS ❤️</h1>
+  <time datetime="2019-06-25T00:00:00-05:00" class="post-date">June 25, 2019</time>
+
+  <ol><li>Login to the AWS website</li><li>Click on Services  (top bar)</li><li>Click on EC2</li><li>Click on Launch Instance</li><li>Search and choose Ubuntu Server (18 or up)</li><li>Leave selected the free tear (unless you have upwards of $10000000000)</li><li>Edit security groups (by clicking on <code>edit security groups</code>)</li><li>Click Add rule - <code>http</code> - leave other defaults</li><li>Click Add rule - <code>https</code> -leave other defaults</li><li>Click Launch Instance</li><li>Choose Create new pair key from the drop down selector (name it and download it)</li><li>Open terminal</li><li>CD into the directory where the pair key was downloaded to and do this</li><li>Change the .pem file permissions with: <code>sudo chmod 600 &lt;&lt;MYPAIRKEYFILENAME&gt;&gt;.pem</code></li><li>Go to your AWS instances tab in the EC2 page and find the Public DNS (IPv4) of your instance </li><li><code>ssh <a href="/cdn-cgi/l/email-protection#7c091e091208093c191f4e514948514e4e48514d4f4e51454f521f13110c090819514d521d111d0613121d0b0f521f1311"><span class="__cf_email__" data-cfemail="790c1b0c170d0c39">[email&#160;protected]</span>&lt;</a>&lt;INSERT.Public.Dns.IPv4&gt;&gt; -i PairKeyName.pem</code></li><li>Type <code>yes</code> to get into the ubuntu computer</li><li>Install docker: <code>sudo snap install docker</code></li><li>Make a start file: <code>vim startserver</code></li><li>Put this in the script👇: </li><li><code>#!/bin/bash; docker run -d --name website -e url=https://&lt;&lt;websitename&gt;&gt; -p 80:2386 -v /home/ubuntu/website:/var/lib/ghost/content ghost</code></li><li>Create a /website directory: <code>mkdir website</code></li><li>Go to <code>cloudflare.com</code> and link your website to it by creating an account (or signing in) and going through the steps to link it to your URL that you used in step <strong>21</strong></li><li>Make a <code>CNAME</code> record with the name being <code>@</code> and the address being the public IPv4 of the aws instance that you found in step <strong>15</strong> (example: <code>ec2-54-224-132-93.compute-1.amazonaws.com</code>)</li><li>Go to your domain service (mine is google domains) and set the nameservers to be cloudflare’s (you should have already done this step while setting up cloudflare in step <strong>23</strong>)</li><li>Change the permissions of the <code>startserver</code> script to be able to execute: <code>chmod +x startscript</code></li><li>Now run it: <code>./startscript</code></li><li>It will take a bit to complete because docker needs to pull the image off of their website, but when it does everything should be up and running</li></ol>
+<h2 id="please-note">Please Note</h2>
+<p>It may take a bit for cloudflare to enable https. It will also take some time for your domain provider to change its nameservers and for that change to propagate back to cloudflare.<br /></p>
+
+</article>
+
+<hr />
+<div class="qna" style="text-align: center">
+  <h2>Questions?</h2>
+  <p>
+    Have a question about this post, Bootstrap, GitHub, or anything else? Ask
+    away on
+    <a href="https://twitter.com/" target="_blank"
+      >Twitter</a
+    >
+    or in
+    <a href="https://github.com/dannydenenberg/ama" target="_blank"
+      >my AMA repo</a
+    >.
+  </p>
+</div>
+
+
+<!-- 
+<aside class="related">
+  <h3>Related posts</h3>
+  <ul class="related-posts">
+    
+    <li>
+      <a href="/linear-algebra">
+        Linear Algebra; The How and Why 🤨
+        <small
+          ><time datetime="2019-07-04T00:00:00-05:00">04 Jul 2019</time></small
+        >
+      </a>
+    </li>
+    
+    <li>
+      <a href="/contributing">
+        How to contribute on GitHub
+        <small
+          ><time datetime="2019-04-23T00:00:00-05:00">23 Apr 2019</time></small
+        >
+      </a>
+    </li>
+    
+    <li>
+      <a href="/installing-node">
+        How to install Node.js
+        <small
+          ><time datetime="2019-03-14T00:00:00-05:00">14 Mar 2019</time></small
+        >
+      </a>
+    </li>
+    
+  </ul>
+</aside>
+ -->
+
+      </main>
+
+      <div class="footer" style="text-align: center">
+  <hr />
+  <p>
+    Be notified of new posts.
+    <a href="feed://feeds.feedburner.com/mdo">Subscribe to the RSS feed.</a>
+  </p>
+</div>
+
+    </div>
+
+    
+  </body>
+</html>
