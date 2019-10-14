@@ -2,6 +2,8 @@
 
 The inspector in the story of Dr. Jekyll and Mr. Hyde.
 
+## [Demo](https://denenberg.us) this Jekyll theme
+
 ---
 
 Newcomen is a Jekyll theme based off of Poole, made by [@mdo](https://twitter.com/mdo).
