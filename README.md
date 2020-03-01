@@ -2,7 +2,7 @@
 
 The inspector in the story of Dr. Jekyll and Mr. Hyde.
 
-## [Demo](https://denenberg.us) this Jekyll theme
+> [Demo](https://suspicious-villani-304da9.netlify.com/) this Jekyll theme
 
 ---
 
